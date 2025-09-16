@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulador CAVE - Simplificado</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    
+    <div id="controls">
+        <div class="input-group">
+            <label>Carregar Imagem:</label>
+            <input type="text" id="image-url" placeholder="URL da imagem">
+            <button id="load-btn">Carregar URL</button>
+            <div class="file-input-wrapper">
+                <label for="image-file" class="file-input-label">Escolher arquivo</label>
+                <input type="file" id="image-file" accept="image/*">
+                <span id="file-name"></span>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="center">Painel Central</button>
+            <button class="tab" data-tab="floor">Piso</button>
+        </div>
+
+        <div id="center-tab" class="tab-content active">
+            <div class="sub-tabs">
+                <button class="sub-tab active" data-subtab="center-position">POSIÇÃO</button>
+                <button class="sub-tab" data-subtab="center-dimension">DIMENSÃO</button>
+                <button class="sub-tab" data-subtab="center-texture">TEXTURA</button>
+            </div>
+            
+            <div class="sub-tab-content active" id="center-position">
+                <div class="slider-group">
+                    <label>Posição X:</label>
+                    <input type="range" id="center-position-x" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="center-position-x-number" value="0" step="0.1">
+                    <span id="center-position-x-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Posição Y:</label>
+                    <input type="range" id="center-position-y" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="center-position-y-number" value="0" step="0.1">
+                    <span id="center-position-y-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Posição Z:</label>
+                    <input type="range" id="center-position-z" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="center-position-z-number" value="0" step="0.1">
+                    <span id="center-position-z-value">0</span>
+                </div>
+            </div>
+            
+            <div class="sub-tab-content" id="center-dimension">
+                <div class="slider-group">
+                    <label>Largura Total:</label>
+                    <input type="range" id="center-width" min="1" max="20" value="10" step="0.1">
+                    <input type="number" id="center-width-number" value="10" step="0.1">
+                    <span id="center-width-value">10</span>
+                </div>
+                <div class="slider-group">
+                    <label>Altura:</label>
+                    <input type="range" id="center-height" min="1" max="20" value="3" step="0.1">
+                    <input type="number" id="center-height-number" value="3" step="0.1">
+                    <span id="center-height-value">3</span>
+                </div>
+                <div class="slider-group">
+                    <label>Largura Lateral Esquerda:</label>
+                    <input type="range" id="left-section-width" min="0" max="50" value="25" step="1">
+                    <input type="number" id="left-section-width-number" value="25" step="1">
+                    <span id="left-section-width-value">25%</span>
+                </div>
+                <div class="slider-group">
+                    <label>Largura Lateral Direita:</label>
+                    <input type="range" id="right-section-width" min="0" max="50" value="25" step="1">
+                    <input type="number" id="right-section-width-number" value="25" step="1">
+                    <span id="right-section-width-value">25%</span>
+                </div>
+                <div class="slider-group">
+                    <label>Ângulo Esquerdo:</label>
+                    <input type="range" id="left-angle" min="-90" max="90" value="0" step="1">
+                    <input type="number" id="left-angle-number" value="0" step="1">
+                    <span id="left-angle-value">0°</span>
+                </div>
+                <div class="slider-group">
+                    <label>Ângulo Direito:</label>
+                    <input type="range" id="right-angle" min="-90" max="90" value="0" step="1">
+                    <input type="number" id="right-angle-number" value="0" step="1">
+                    <span id="right-angle-value">0°</span>
+                </div>
+                <div class="slider-group">
+                    <label>Raio da Curva:</label>
+                    <input type="range" id="curve-radius" min="0" max="2" value="0.5" step="0.05">
+                    <input type="number" id="curve-radius-number" value="0.5" step="0.05">
+                    <span id="curve-radius-value">0.5</span>
+                </div>
+            </div>
+            
+            <div class="sub-tab-content" id="center-texture">
+                <div class="slider-group">
+                    <label>Cor:</label>
+                    <input type="color" id="center-color" value="#333333">
+                    <span id="center-color-value">#333333</span>
+                </div>
+                <div class="slider-group">
+                    <label>Offset X:</label>
+                    <input type="range" id="center-offset-x" min="-1" max="1" value="0" step="0.01">
+                    <input type="number" id="center-offset-x-number" value="0" step="0.01">
+                    <span id="center-offset-x-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Offset Y:</label>
+                    <input type="range" id="center-offset-y" min="-1" max="1" value="0" step="0.01">
+                    <input type="number" id="center-offset-y-number" value="0" step="0.01">
+                    <span id="center-offset-y-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Escala X:</label>
+                    <input type="range" id="center-scale-x" min="0.1" max="10" value="1" step="0.1">
+                    <input type="number" id="center-scale-x-number" value="1" step="0.1">
+                    <span id="center-scale-x-value">1</span>
+                </div>
+                <div class="slider-group">
+                    <label>Escala Y:</label>
+                    <input type="range" id="center-scale-y" min="0.1" max="10" value="1" step="0.1">
+                    <input type="number" id="center-scale-y-number" value="1" step="0.1">
+                    <span id="center-scale-y-value">1</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="floor-tab" class="tab-content">
+            <div class="sub-tabs">
+                <button class="sub-tab active" data-subtab="floor-position">POSIÇÃO</button>
+                <button class="sub-tab" data-subtab="floor-dimension">DIMENSÃO</button>
+                <button class="sub-tab" data-subtab="floor-texture">TEXTURA</button>
+            </div>
+            
+            <div class="sub-tab-content active" id="floor-position">
+                <div class="slider-group">
+                    <label>Posição X:</label>
+                    <input type="range" id="floor-position-x" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="floor-position-x-number" value="0" step="0.1">
+                    <span id="floor-position-x-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Posição Y:</label>
+                    <input type="range" id="floor-position-y" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="floor-position-y-number" value="0" step="0.1">
+                    <span id="floor-position-y-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Posição Z:</label>
+                    <input type="range" id="floor-position-z" min="-10" max="10" value="0" step="0.1">
+                    <input type="number" id="floor-position-z-number" value="0" step="0.1">
+                    <span id="floor-position-z-value">0</span>
+                </div>
+            </div>
+            
+            <div class="sub-tab-content" id="floor-dimension">
+                <div class="slider-group">
+                    <label>Largura:</label>
+                    <input type="range" id="floor-width" min="1" max="20" value="8" step="0.1">
+                    <input type="number" id="floor-width-number" value="8" step="0.1">
+                    <span id="floor-width-value">8</span>
+                </div>
+                <div class="slider-group">
+                    <label>Profundidade:</label>
+                    <input type="range" id="floor-depth" min="1" max="20" value="6" step="0.1">
+                    <input type="number" id="floor-depth-number" value="6" step="0.1">
+                    <span id="floor-depth-value">6</span>
+                </div>
+            </div>
+            
+            <div class="sub-tab-content" id="floor-texture">
+                <div class="slider-group">
+                    <label>Cor:</label>
+                    <input type="color" id="floor-color" value="#333333">
+                    <span id="floor-color-value">#333333</span>
+                </div>
+                <div class="slider-group">
+                    <label>Offset X:</label>
+                    <input type="range" id="floor-offset-x" min="-1" max="1" value="0" step="0.01">
+                    <input type="number" id="floor-offset-x-number" value="0" step="0.01">
+                    <span id="floor-offset-x-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Offset Y:</label>
+                    <input type="range" id="floor-offset-y" min="-1" max="1" value="0" step="0.01">
+                    <input type="number" id="floor-offset-y-number" value="0" step="0.01">
+                    <span id="floor-offset-y-value">0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Escala X:</label>
+                    <input type="range" id="floor-scale-x" min="0.1" max="10" value="1" step="0.1">
+                    <input type="number" id="floor-scale-x-number" value="1" step="0.1">
+                    <span id="floor-scale-x-value">1</span>
+                </div>
+                <div class="slider-group">
+                    <label>Escala Y:</label>
+                    <input type="range" id="floor-scale-y" min="0.1" max="10" value="1" step="0.1">
+                    <input type="number" id="floor-scale-y-number" value="1" step="0.1">
+                    <span id="floor-scale-y-value">1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="presets" style="position: absolute; bottom: 20px; left: 20px; background: rgba(15, 25, 45, 0.9); padding: 15px; border-radius: 10px;">
+        <h3 style="color: #6eb4ff; margin-bottom: 10px;">Presets:</h3>
+        <button onclick="applyPreset('cave')" style="margin: 5px; padding: 5px 10px;">CAVE (+45°)</button>
+        <button onclick="applyPreset('cave90')" style="margin: 5px; padding: 5px 10px;">CAVE (+90°)</button>
+        <button onclick="applyPreset('expand')" style="margin: 5px; padding: 5px 10px;">Expansivo (-45°)</button>
+        <button onclick="applyPreset('expand90')" style="margin: 5px; padding: 5px 10px;">Expansivo (-90°)</button>
+        <button onclick="applyPreset('flat')" style="margin: 5px; padding: 5px 10px;">Plano (0°)</button>
+        <br>
+        <button onclick="applyPreset('testMirror')" style="margin: 5px; padding: 5px 10px; background: #ff6666;">Teste Espelho (+45/-45)</button>
+        <button onclick="applyPreset('negativeTest')" style="margin: 5px; padding: 5px 10px; background: #ffaa66;">Teste Negativo (-30°)</button>
+        <button onclick="applyPreset('debugCurve')" style="margin: 5px; padding: 5px 10px; background: #aa66ff;">Debug Curva (±15°)</button>
+        <button onclick="toggleDebugLines()" style="margin: 5px; padding: 5px 10px; background: #66ff66;">Mostrar/Ocultar Linhas</button>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function applyPreset(preset) {
+            switch(preset) {
+                case 'cave':
+                    document.getElementById('left-angle').value = 45;
+                    document.getElementById('left-angle-number').value = 45;
+                    document.getElementById('left-angle-value').textContent = '45°';
+                    document.getElementById('right-angle').value = 45;
+                    document.getElementById('right-angle-number').value = 45;
+                    document.getElementById('right-angle-value').textContent = '45°';
+                    break;
+                case 'cave90':
+                    document.getElementById('left-angle').value = 90;
+                    document.getElementById('left-angle-number').value = 90;
+                    document.getElementById('left-angle-value').textContent = '90°';
+                    document.getElementById('right-angle').value = 90;
+                    document.getElementById('right-angle-number').value = 90;
+                    document.getElementById('right-angle-value').textContent = '90°';
+                    break;
+                case 'expand':
+                    document.getElementById('left-angle').value = -45;
+                    document.getElementById('left-angle-number').value = -45;
+                    document.getElementById('left-angle-value').textContent = '-45°';
+                    document.getElementById('right-angle').value = -45;
+                    document.getElementById('right-angle-number').value = -45;
+                    document.getElementById('right-angle-value').textContent = '-45°';
+                    break;
+                case 'expand90':
+                    document.getElementById('left-angle').value = -90;
+                    document.getElementById('left-angle-number').value = -90;
+                    document.getElementById('left-angle-value').textContent = '-90°';
+                    document.getElementById('right-angle').value = -90;
+                    document.getElementById('right-angle-number').value = -90;
+                    document.getElementById('right-angle-value').textContent = '-90°';
+                    break;
+                case 'flat':
+                    document.getElementById('left-angle').value = 0;
+                    document.getElementById('left-angle-number').value = 0;
+                    document.getElementById('left-angle-value').textContent = '0°';
+                    document.getElementById('right-angle').value = 0;
+                    document.getElementById('right-angle-number').value = 0;
+                    document.getElementById('right-angle-value').textContent = '0°';
+                    break;
+                case 'testMirror':
+                    // Teste de espelhamento: esquerda positiva, direita negativa
+                    document.getElementById('left-angle').value = 45;
+                    document.getElementById('left-angle-number').value = 45;
+                    document.getElementById('left-angle-value').textContent = '45°';
+                    document.getElementById('right-angle').value = -45;
+                    document.getElementById('right-angle-number').value = -45;
+                    document.getElementById('right-angle-value').textContent = '-45°';
+                    break;
+                case 'negativeTest':
+                    // Teste apenas com ângulos negativos
+                    document.getElementById('left-angle').value = -30;
+                    document.getElementById('left-angle-number').value = -30;
+                    document.getElementById('left-angle-value').textContent = '-30°';
+                    document.getElementById('right-angle').value = -30;
+                    document.getElementById('right-angle-number').value = -30;
+                    document.getElementById('right-angle-value').textContent = '-30°';
+                    break;
+                case 'debugCurve':
+                    // Teste com ângulos pequenos para debug
+                    document.getElementById('left-angle').value = 15;
+                    document.getElementById('left-angle-number').value = 15;
+                    document.getElementById('left-angle-value').textContent = '15°';
+                    document.getElementById('right-angle').value = -15;
+                    document.getElementById('right-angle-number').value = -15;
+                    document.getElementById('right-angle-value').textContent = '-15°';
+                    document.getElementById('curve-radius').value = 1;
+                    document.getElementById('curve-radius-number').value = 1;
+                    document.getElementById('curve-radius-value').textContent = '1';
+                    break;
+            }
+            createGeometry();
+        }
+        
+        let debugVisible = false;
+        function toggleDebugLines() {
+            debugVisible = !debugVisible;
+            if (debugVisible) {
+                addDebugLines();
+            } else {
+                debugLines.forEach(line => scene.remove(line));
+                debugLines = [];
+            }
+        }
+    </script>
+</body>
+</html>

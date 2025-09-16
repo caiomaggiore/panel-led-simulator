@@ -1,0 +1,166 @@
+{
+  "name": "Simulador CAVE",
+  "short_name": "CAVE Sim",
+  "description": "Simulador avançado de ambientes CAVE com painéis LED curvos",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  
+  "application": {
+    "type": "web-app",
+    "entry_point": "index.html",
+    "category": "visualization",
+    "subcategory": "3d-simulation"
+  },
+  
+  "project": {
+    "id": "simulador-cave-2024",
+    "created": "2024-12-19",
+    "status": "production",
+    "environment": "browser",
+    "platform": "web"
+  },
+  
+  "technical": {
+    "engine": "Three.js r128",
+    "renderer": "WebGL",
+    "geometry_type": "procedural_vertex_deformation",
+    "continuity_level": "C0_position_continuous",
+    "precision": "float32",
+    "coordinate_system": "right_handed"
+  },
+  
+  "features": {
+    "core": [
+      "curved_led_panels",
+      "real_time_geometry",
+      "continuous_surface",
+      "bidirectional_curvature"
+    ],
+    "ui": [
+      "tabbed_interface",
+      "synchronized_controls",
+      "preset_configurations",
+      "debug_visualization"
+    ],
+    "rendering": [
+      "texture_mapping",
+      "color_customization",
+      "lighting_system",
+      "orbital_camera"
+    ]
+  },
+  
+  "parameters": {
+    "geometry": {
+      "width_range": [1, 20],
+      "height_range": [1, 10],
+      "angle_range": [-90, 90],
+      "radius_range": [0, 2],
+      "segments": {
+        "width": 100,
+        "height": 10
+      }
+    },
+    "defaults": {
+      "width": 10,
+      "height": 3,
+      "left_section": 25,
+      "right_section": 25,
+      "left_angle": 0,
+      "right_angle": 0,
+      "curve_radius": 0.5,
+      "color": "#444444"
+    }
+  },
+  
+  "files": {
+    "main": "index.html",
+    "script": "script.js",
+    "styles": "style.css",
+    "documentation": "README.md",
+    "package": "package.json"
+  },
+  
+  "dependencies": {
+    "required": [
+      "three.js >= 0.128.0"
+    ],
+    "optional": [
+      "OrbitControls"
+    ],
+    "cdn": [
+      "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+      "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"
+    ]
+  },
+  
+  "compatibility": {
+    "browsers": [
+      "Chrome >= 88",
+      "Firefox >= 78",
+      "Safari >= 14",
+      "Edge >= 88"
+    ],
+    "webgl": "1.0 minimum, 2.0 recommended",
+    "mobile": "limited support"
+  },
+  
+  "performance": {
+    "recommended_specs": {
+      "gpu": "dedicated graphics card",
+      "ram": "4GB minimum",
+      "cpu": "modern multi-core"
+    },
+    "optimization": {
+      "geometry_reuse": true,
+      "vertex_updates": true,
+      "debug_cleanup": true
+    }
+  },
+  
+  "usage": {
+    "presets": [
+      {
+        "name": "CAVE (+45°)",
+        "description": "Configuração CAVE tradicional",
+        "angles": [45, 45]
+      },
+      {
+        "name": "CAVE (+90°)",
+        "description": "Imersão máxima",
+        "angles": [90, 90]
+      },
+      {
+        "name": "Expansivo (-45°)",
+        "description": "Formato aberto médio",
+        "angles": [-45, -45]
+      },
+      {
+        "name": "Expansivo (-90°)",
+        "description": "Formato aberto máximo",
+        "angles": [-90, -90]
+      }
+    ]
+  },
+  
+  "development": {
+    "debug_tools": [
+      "geometry_visualization",
+      "continuity_checker",
+      "vertex_markers",
+      "console_logging"
+    ],
+    "testing": {
+      "unit_tests": false,
+      "integration_tests": false,
+      "manual_testing": true
+    }
+  },
+  
+  "license": "MIT",
+  "author": {
+    "name": "Caio M.",
+    "organization": "Maggiore AV",
+    "project_context": "Accenture Cave Extension"
+  }
+}

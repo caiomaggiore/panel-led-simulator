@@ -1,0 +1,373 @@
+/* style.css */
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0c1426;
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Painel de controle */
+#controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgba(15, 25, 45, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #6eb4ff;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.control-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(110, 180, 255, 0.2);
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #6eb4ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Grupo de entrada de imagem */
+.input-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(110, 180, 255, 0.2);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #6eb4ff;
+    font-size: 0.9rem;
+}
+
+#image-url {
+    width: 100%;
+    padding: 8px;
+    background: rgba(12, 22, 45, 0.8);
+    border: 1px solid #2a3f6b;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 8px;
+}
+
+#load-btn {
+    width: 100%;
+    padding: 8px;
+    background: #4a86e8;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.file-input-wrapper {
+    margin-top: 10px;
+}
+
+.file-input-label {
+    display: block;
+    padding: 8px;
+    background: rgba(110, 180, 255, 0.15);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.file-input-label:hover {
+    background: rgba(110, 180, 255, 0.25);
+}
+
+#image-file {
+    display: none;
+}
+
+#file-name {
+    font-size: 0.8rem;
+    color: #6eb4ff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Abas */
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.tab {
+    flex: 1;
+    padding: 8px 12px;
+    background: rgba(110, 180, 255, 0.1);
+    border: none;
+    border-radius: 4px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tab.active {
+    background: rgba(110, 180, 255, 0.3);
+    color: white;
+}
+
+/* Sub-abas */
+.sub-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.sub-tab {
+    flex: 1;
+    padding: 6px 10px;
+    background: rgba(70, 140, 215, 0.1);
+    border: none;
+    border-radius: 4px;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.sub-tab.active {
+    background: rgba(70, 140, 215, 0.25);
+    color: #6eb4ff;
+}
+
+.sub-tab:hover {
+    background: rgba(70, 140, 215, 0.2);
+}
+
+/* Conteúdo das sub-abas */
+.sub-tab-content {
+    display: none;
+}
+
+.sub-tab-content.active {
+    display: block;
+}
+
+/* Conteúdo das abas */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Grupos de sliders */
+.slider-group {
+    margin-bottom: 15px;
+}
+
+.slider-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #6eb4ff;
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(110, 180, 255, 0.2);
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #6eb4ff;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(110, 180, 255, 0.4);
+}
+
+.slider-group input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    background: rgba(12, 22, 45, 0.8);
+    border: 1px solid #2a3f6b;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+}
+
+.slider-group span {
+    margin-left: 8px;
+    color: #6eb4ff;
+    font-size: 0.9rem;
+}
+
+/* Input de cor */
+input[type="color"] {
+    width: 50px;
+    height: 30px;
+    border: 1px solid #2a3f6b;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    padding: 2px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 3px;
+}
+
+/* Controles em linha */
+.slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-controls input[type="range"] {
+    flex: 1;
+}
+
+.presets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.preset-btn {
+    background: rgba(110, 180, 255, 0.15);
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.preset-btn:hover {
+    background: rgba(110, 180, 255, 0.25);
+}
+
+.preset-btn.saved {
+    animation: saved-flash 0.5s ease;
+}
+
+.preset-info {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+@keyframes saved-flash {
+    0% { background: rgba(110, 180, 255, 0.15); }
+    50% { background: rgba(110, 180, 255, 0.5); }
+    100% { background: rgba(110, 180, 255, 0.15); }
+}
+
+.preset-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: #6eb4ff;
+    width: 0;
+    transition: width 5s linear;
+}
+
+.preset-btn.saving::after {
+    width: 100%;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6eb4ff;
+    font-size: 1.2rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+#info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(15, 25, 45, 0.8);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #controls {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        overflow-y: auto;
+    }
+    
+    .tabs {
+        position: sticky;
+        top: 0;
+        background: rgba(15, 25, 45, 0.95);
+        padding: 10px 0;
+    }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "simulador-cave",
+  "version": "1.0.0",
+  "description": "Simulador avançado de ambientes CAVE com painéis LED curvos e configurações em tempo real",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o",
+    "dev": "npx live-server --port=8080 --open=index.html",
+    "build": "echo 'Static project - no build required'",
+    "lint": "echo 'Linting not configured'"
+  },
+  "keywords": [
+    "cave",
+    "led-panels",
+    "3d-visualization",
+    "three.js",
+    "immersive",
+    "simulator",
+    "virtual-environment"
+  ],
+  "author": {
+    "name": "Caio M.",
+    "company": "Maggiore AV",
+    "project": "Accenture Cave Extension"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "local"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 1%"
+  ],
+  "config": {
+    "cave": {
+      "defaultWidth": 10,
+      "defaultHeight": 3,
+      "maxAngle": 90,
+      "maxRadius": 2,
+      "segments": {
+        "width": 100,
+        "height": 10
+      }
+    }
+  },
+  "metadata": {
+    "created": "2024-12-19",
+    "lastModified": "2024-12-19",
+    "version": "1.0.0",
+    "status": "production",
+    "features": [
+      "curved-panels",
+      "real-time-geometry",
+      "texture-mapping",
+      "debug-visualization",
+      "preset-configurations"
+    ],
+    "technical": {
+      "renderer": "WebGL",
+      "library": "Three.js",
+      "geometryType": "procedural-vertex-deformation",
+      "continuity": "C0-position-continuous"
+    }
+  }
+}
