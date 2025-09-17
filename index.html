@@ -10,6 +10,97 @@
 <body>
     <div id="container"></div>
     
+    <!-- Seletor de Modo (topo direito) -->
+    <div id="work-mode-selector">
+        <button class="work-mode-btn active" onclick="setWorkMode('preview3d')">
+            <i class="fas fa-cube"></i>
+            <span>Preview 3D</span>
+        </button>
+        <button class="work-mode-btn" onclick="setWorkMode('uv-editor')">
+            <i class="fas fa-edit"></i>
+            <span>Editor UV</span>
+        </button>
+    </div>
+    
+    <!-- Editor UV (ocupará tela inteira quando ativo) -->
+    <div id="uv-editor-fullscreen">
+        <div class="uv-editor-container">
+            <!-- PIP Preview 3D -->
+            <div id="pip-preview">
+                <div id="pip-3d-container"></div>
+                <div class="pip-controls">
+                    <button class="pip-btn" onclick="togglePIP()">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menu de Controles UV (abaixo do PIP) -->
+            <div id="uv-controls-panel">
+                <h4>CONTROLES UV</h4>
+                <div class="uv-control-group">
+                    <label>Resolução:</label>
+                    <select id="uv-grid-resolution" onchange="updateGridResolution()">
+                        <option value="2">2x2</option>
+                        <option value="3">3x3</option>
+                        <option value="5" selected>5x5</option>
+                    </select>
+                </div>
+                <div class="uv-control-group">
+                    <button class="uv-control-btn" onclick="toggleInfluenceMode()">
+                        <i class="fas fa-bullseye"></i> <span id="influence-btn-text">Influência ON</span>
+                    </button>
+                </div>
+                <div class="uv-control-group">
+                    <label>Raio:</label>
+                    <select id="uv-influence-radius" onchange="updateInfluenceRadius()">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="uv-control-group">
+                    <label>Intensidade:</label>
+                    <select id="uv-influence-strength" onchange="updateInfluenceStrength()">
+                        <option value="0.25">Fraco</option>
+                        <option value="0.50" selected>Médio</option>
+                        <option value="0.75">Forte</option>
+                    </select>
+                </div>
+                <div class="uv-control-group">
+                    <button class="uv-control-btn primary" onclick="resetUVGrid()">
+                        <i class="fas fa-undo"></i> Reset Grade
+                    </button>
+                </div>
+                <div class="uv-control-group">
+                    <button class="uv-control-btn success" onclick="applyDistortionToFloor()">
+                        <i class="fas fa-check"></i> Aplicar ao Piso
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Editor Principal -->
+            <div class="uv-main-editor">
+                <div class="uv-editor-header">
+                    <h2>EDITOR DE DISTORÇÃO UV</h2>
+                </div>
+                
+                <div class="uv-editor-workspace">
+                    <canvas id="uv-editor-canvas"></canvas>
+                </div>
+                
+                <div class="uv-editor-footer">
+                    <div class="uv-instructions">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Arraste os pontos da grade para distorcer a textura. Use o PIP para ver o resultado em tempo real.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div id="controls">
         <div class="input-group">
             <label>Carregar Imagem:</label>
@@ -208,6 +299,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     
     <div id="presets" class="preset-panel">
@@ -263,6 +355,7 @@
     <script src="modules/core.js"></script>
     <script src="modules/ui-controls.js"></script> 
     <script src="modules/presets.js"></script> 
-    <script src="modules/debug-tools.js"></script> 
+    <script src="modules/debug-tools.js"></script>
+    <script src="modules/uv-editor.js"></script> 
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "simulador-cave",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simulador avançado de ambientes CAVE com painéis LED curvos e configurações em tempo real",
   "main": "index.html",
   "scripts": {

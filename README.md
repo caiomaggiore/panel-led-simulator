@@ -5,7 +5,7 @@
 **Simulador de Ambiente CAVE** para visualização e configuração de painéis LED curvos em tempo real. Desenvolvido com Three.js para simular ambientes imersivos realistas.
 
 ![GitHub](https://img.shields.io/github/license/caiomaggiore/panel-led-simulator)
-![Version](https://img.shields.io/badge/version-1.2.0-blue)
+![Version](https://img.shields.io/badge/version-1.2.1-blue)
 ![Three.js](https://img.shields.io/badge/Three.js-r128-green)
 
 ## 🚀 Início Rápido

@@ -2,6 +2,32 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [1.2.1] - 2024-12-19
+
+### ✨ Editor UV - FASE 1 Completa
+- **Modo de Trabalho**: Sistema de alternância Preview 3D ↔ Editor UV
+- **Editor UV Fullscreen**: Interface dedicada para edição de distorção
+- **PIP Preview 3D**: Preview 3D em Picture-in-Picture (300x180px)
+- **Controles Organizados**: Área direita como centro oficial de controles
+
+### 🎛️ Sistema de Influência Avançado
+- **Hover Effects**: Pontos aumentam de tamanho ao passar o mouse
+- **Sistema de Influência**: Pontos próximos se movem proporcionalmente
+- **Controles de Intensidade**: Fraco, Médio (50% padrão), Forte
+- **Raio Configurável**: 1 a 5 unidades de grade
+- **Margem de Arrasto**: 20px além dos limites para melhor controle
+
+### 🎨 Interface Aprimorada
+- **Seletor de Modo**: Topo direito com ícones FontAwesome
+- **Layout Responsivo**: PIP + Controles alinhados verticalmente
+- **Área de Controles**: Lado direito dedicado para ambos os modos
+- **Visual Harmonioso**: Todos os elementos perfeitamente espaçados
+
+### 🔧 Funcionalidades
+- **Grade Editável**: 2x2, 3x3, 5x5 com pontos arrastáveis
+- **Reset Inteligente**: Volta à grade original
+- **Preparado para FASE 2**: Base sólida para preview em tempo real
+
 ## [1.2.0] - 2024-12-19
 
 ### 🏗️ Refatoração Arquitetural
