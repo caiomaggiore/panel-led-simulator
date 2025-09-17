@@ -2,7 +2,7 @@
   "name": "Simulador CAVE",
   "short_name": "CAVE Sim",
   "description": "Simulador avançado de ambientes CAVE com painéis LED curvos",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 1,
   
   "application": {

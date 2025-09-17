@@ -2,6 +2,33 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [1.1.0] - 2024-12-19
+
+### ✨ Adicionado
+- **Sistema de Presets Avançado**: 4 presets personalizáveis com salvamento
+- **Interface com Abas**: Organização em presets, salvamento e ferramentas
+- **Ícones FontAwesome**: Navegação visual com ícones modernos
+- **Preset Padrão Realista**: Configuração CAVE (-90°) como padrão
+- **LocalStorage**: Persistência de configurações entre sessões
+- **Confirmação de Salvamento**: Modal de segurança antes de sobrescrever
+
+### 🔧 Modificado
+- **Layout do Painel**: Altura fixa (250px) e largura (240px)
+- **Altura dos Botões**: Padronização em 40px para todos
+- **Organização do Código**: Scripts movidos do HTML para JS
+- **Menu de Controles**: Scroll automático quando necessário
+- **Scrollbar Personalizada**: Estilo harmonizado com o tema
+
+### 🚫 Removido
+- **Presets de Teste**: Removidos presets genéricos temporários
+- **Carregamento Automático**: Removida injeção automática de URLs de textura
+- **Scripts Inline**: Todo JavaScript centralizado em script.js
+
+### 🐛 Corrigido
+- **Overflow do Menu**: Scroll funcional em telas pequenas
+- **Continuidade das Curvas**: Ângulos negativos funcionando perfeitamente
+- **Reset Padrão**: Funciona sem quebrar o carregamento de texturas
+
 ## [1.0.0] - 2024-12-19
 
 ### 🎉 Lançamento Inicial

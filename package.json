@@ -1,6 +1,6 @@
 {
   "name": "simulador-cave",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simulador avançado de ambientes CAVE com painéis LED curvos e configurações em tempo real",
   "main": "index.html",
   "scripts": {
@@ -33,7 +33,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "local"
+    "url": "https://github.com/caiomaggiore/panel-led-simulator.git"
+  },
+  "homepage": "https://github.com/caiomaggiore/panel-led-simulator",
+  "bugs": {
+    "url": "https://github.com/caiomaggiore/panel-led-simulator/issues"
   },
   "engines": {
     "node": ">=14.0.0",

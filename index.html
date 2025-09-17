@@ -3,6 +3,7 @@
 <head>
     <title>Simulador CAVE - Simplificado</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
@@ -209,108 +210,55 @@
         </div>
     </div>
     
-    <div id="presets" style="position: absolute; bottom: 20px; left: 20px; background: rgba(15, 25, 45, 0.9); padding: 15px; border-radius: 10px;">
-        <h3 style="color: #6eb4ff; margin-bottom: 10px;">Presets:</h3>
-        <button onclick="applyPreset('cave')" style="margin: 5px; padding: 5px 10px;">CAVE (+45°)</button>
-        <button onclick="applyPreset('cave90')" style="margin: 5px; padding: 5px 10px;">CAVE (+90°)</button>
-        <button onclick="applyPreset('expand')" style="margin: 5px; padding: 5px 10px;">Expansivo (-45°)</button>
-        <button onclick="applyPreset('expand90')" style="margin: 5px; padding: 5px 10px;">Expansivo (-90°)</button>
-        <button onclick="applyPreset('flat')" style="margin: 5px; padding: 5px 10px;">Plano (0°)</button>
-        <br>
-        <button onclick="applyPreset('testMirror')" style="margin: 5px; padding: 5px 10px; background: #ff6666;">Teste Espelho (+45/-45)</button>
-        <button onclick="applyPreset('negativeTest')" style="margin: 5px; padding: 5px 10px; background: #ffaa66;">Teste Negativo (-30°)</button>
-        <button onclick="applyPreset('debugCurve')" style="margin: 5px; padding: 5px 10px; background: #aa66ff;">Debug Curva (±15°)</button>
-        <button onclick="toggleDebugLines()" style="margin: 5px; padding: 5px 10px; background: #66ff66;">Mostrar/Ocultar Linhas</button>
+    <div id="presets" class="preset-panel">
+        <h3>PRESETS</h3>
+        
+        <!-- Abas do painel de presets -->
+        <div class="preset-tabs">
+            <button class="preset-tab active" onclick="showPresetTab('presets')">
+                <i class="fas fa-th-large"></i>
+            </button>
+            <button class="preset-tab" onclick="showPresetTab('save')">
+                <i class="fas fa-save"></i>
+            </button>
+            <button class="preset-tab" onclick="showPresetTab('tools')">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+        
+        <!-- Conteúdo das abas -->
+        <div id="preset-tab-presets" class="preset-tab-content active">
+            <!-- Grade de 4 presets (2x2) -->
+            <div class="preset-grid">
+                <button class="preset-btn" onclick="applyPreset('preset1')">PRESET 1</button>
+                <button class="preset-btn" onclick="applyPreset('preset2')">PRESET 2</button>
+                <button class="preset-btn" onclick="applyPreset('preset3')">PRESET 3</button>
+                <button class="preset-btn" onclick="applyPreset('preset4')">PRESET 4</button>
+            </div>
+        </div>
+        
+        <div id="preset-tab-save" class="preset-tab-content">
+            <!-- Controles de salvamento -->
+            <div class="save-controls">
+                <select id="presetSelect" class="preset-select">
+                    <option value="preset1">PRESET 1</option>
+                    <option value="preset2">PRESET 2</option>
+                    <option value="preset3">PRESET 3</option>
+                    <option value="preset4">PRESET 4</option>
+                </select>
+                <button class="save-btn" onclick="saveCurrentPreset()">SALVAR PRESET</button>
+            </div>
+        </div>
+        
+        <div id="preset-tab-tools" class="preset-tab-content">
+            <!-- Ferramentas -->
+            <div class="tools-section">
+                <button class="tool-btn reset-btn" onclick="applyPreset('cavePadrao')">PRESET PADRÃO</button>
+                <button class="tool-btn debug-btn" onclick="toggleDebugLines()">MOSTRAR/OCULTAR LINHAS</button>
+            </div>
+        </div>
     </div>
     
     <script src="script.js"></script>
-    <script>
-        function applyPreset(preset) {
-            switch(preset) {
-                case 'cave':
-                    document.getElementById('left-angle').value = 45;
-                    document.getElementById('left-angle-number').value = 45;
-                    document.getElementById('left-angle-value').textContent = '45°';
-                    document.getElementById('right-angle').value = 45;
-                    document.getElementById('right-angle-number').value = 45;
-                    document.getElementById('right-angle-value').textContent = '45°';
-                    break;
-                case 'cave90':
-                    document.getElementById('left-angle').value = 90;
-                    document.getElementById('left-angle-number').value = 90;
-                    document.getElementById('left-angle-value').textContent = '90°';
-                    document.getElementById('right-angle').value = 90;
-                    document.getElementById('right-angle-number').value = 90;
-                    document.getElementById('right-angle-value').textContent = '90°';
-                    break;
-                case 'expand':
-                    document.getElementById('left-angle').value = -45;
-                    document.getElementById('left-angle-number').value = -45;
-                    document.getElementById('left-angle-value').textContent = '-45°';
-                    document.getElementById('right-angle').value = -45;
-                    document.getElementById('right-angle-number').value = -45;
-                    document.getElementById('right-angle-value').textContent = '-45°';
-                    break;
-                case 'expand90':
-                    document.getElementById('left-angle').value = -90;
-                    document.getElementById('left-angle-number').value = -90;
-                    document.getElementById('left-angle-value').textContent = '-90°';
-                    document.getElementById('right-angle').value = -90;
-                    document.getElementById('right-angle-number').value = -90;
-                    document.getElementById('right-angle-value').textContent = '-90°';
-                    break;
-                case 'flat':
-                    document.getElementById('left-angle').value = 0;
-                    document.getElementById('left-angle-number').value = 0;
-                    document.getElementById('left-angle-value').textContent = '0°';
-                    document.getElementById('right-angle').value = 0;
-                    document.getElementById('right-angle-number').value = 0;
-                    document.getElementById('right-angle-value').textContent = '0°';
-                    break;
-                case 'testMirror':
-                    // Teste de espelhamento: esquerda positiva, direita negativa
-                    document.getElementById('left-angle').value = 45;
-                    document.getElementById('left-angle-number').value = 45;
-                    document.getElementById('left-angle-value').textContent = '45°';
-                    document.getElementById('right-angle').value = -45;
-                    document.getElementById('right-angle-number').value = -45;
-                    document.getElementById('right-angle-value').textContent = '-45°';
-                    break;
-                case 'negativeTest':
-                    // Teste apenas com ângulos negativos
-                    document.getElementById('left-angle').value = -30;
-                    document.getElementById('left-angle-number').value = -30;
-                    document.getElementById('left-angle-value').textContent = '-30°';
-                    document.getElementById('right-angle').value = -30;
-                    document.getElementById('right-angle-number').value = -30;
-                    document.getElementById('right-angle-value').textContent = '-30°';
-                    break;
-                case 'debugCurve':
-                    // Teste com ângulos pequenos para debug
-                    document.getElementById('left-angle').value = 15;
-                    document.getElementById('left-angle-number').value = 15;
-                    document.getElementById('left-angle-value').textContent = '15°';
-                    document.getElementById('right-angle').value = -15;
-                    document.getElementById('right-angle-number').value = -15;
-                    document.getElementById('right-angle-value').textContent = '-15°';
-                    document.getElementById('curve-radius').value = 1;
-                    document.getElementById('curve-radius-number').value = 1;
-                    document.getElementById('curve-radius-value').textContent = '1';
-                    break;
-            }
-            createGeometry();
-        }
-        
-        let debugVisible = false;
-        function toggleDebugLines() {
-            debugVisible = !debugVisible;
-            if (debugVisible) {
-                addDebugLines();
-            } else {
-                debugLines.forEach(line => scene.remove(line));
-                debugLines = [];
-            }
-        }
-    </script>
 </body>
 </html>
