@@ -2,6 +2,34 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [1.2.0] - 2024-12-19
+
+### 🏗️ Refatoração Arquitetural
+- **Modularização Completa**: Sistema totalmente reorganizado em módulos
+- **Estrutura modules/**: Todos os scripts organizados em pasta dedicada
+- **Separação de Responsabilidades**: Core 3D, UI, Presets e Debug isolados
+
+### ✨ Adicionado
+- **modules/core.js**: Sistema 3D principal (Three.js, geometria, texturas)
+- **modules/ui-controls.js**: Gerenciamento de interface e eventos
+- **modules/presets.js**: Sistema de configurações e salvamento
+- **modules/debug-tools.js**: Ferramentas de visualização e debug
+- **MODULES.md**: Documentação da arquitetura modular
+
+### 🔧 Modificado
+- **Estrutura de Arquivos**: Migração para sistema modular
+- **Carregamento**: Ordem de importação otimizada
+- **Manutenibilidade**: Código organizado por funcionalidade
+
+### 🚫 Removido
+- **script.js**: Arquivo monolítico substituído por módulos
+
+### 🎯 Benefícios
+- **Escalabilidade**: Fácil adição de novas funcionalidades
+- **Manutenção**: Debugging e modificações mais eficientes
+- **Colaboração**: Desenvolvimento paralelo em módulos diferentes
+- **Reutilização**: Componentes independentes e reutilizáveis
+
 ## [1.1.0] - 2024-12-19
 
 ### ✨ Adicionado

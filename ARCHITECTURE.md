@@ -6,12 +6,17 @@
 ```
 simulador-cave/
 ├── index.html              # Interface principal (HTML puro)
-├── script.js               # Core Three.js, geometria e sistema de presets
-├── style.css              # Estilos e layout responsivo
-├── package.json           # Metadados npm v1.1.0
-├── manifest.json          # Especificações técnicas v1.1.0
+├── modules/                # 📦 Sistema modular
+│   ├── core.js            # ⚡ Core 3D (Three.js, geometria, texturas)
+│   ├── ui-controls.js     # 🎛️ Controles de interface e eventos
+│   ├── presets.js         # 💾 Sistema de presets e configurações
+│   └── debug-tools.js     # 🔧 Ferramentas de debug e visualização
+├── style.css              # 🎨 Estilos e layout responsivo
+├── package.json           # Metadados npm v1.2.0
+├── manifest.json          # Especificações técnicas v1.2.0
 ├── README.md              # Documentação do usuário
 ├── ARCHITECTURE.md        # Esta documentação técnica
+├── MODULES.md             # Documentação da estrutura modular
 ├── CHANGELOG.md           # Histórico de versões
 └── .gitignore             # Arquivos ignorados pelo Git
 ```
