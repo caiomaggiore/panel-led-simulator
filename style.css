@@ -662,8 +662,37 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 10px;
     border: 1px solid rgba(110, 180, 255, 0.3);
     backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 1002; /* Maior que os controles UV (1000) */
     overflow: hidden;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* PIP expandido */
+#pip-preview.expanded {
+    width: 600px !important;
+    height: 360px !important;
+}
+
+/* Controles do PIP sempre visíveis */
+.pip-controls {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1003;
+}
+
+.pip-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.pip-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
 }
 
 #pip-3d-container {

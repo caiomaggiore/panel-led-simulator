@@ -2,6 +2,37 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [1.3.0] - 2024-12-19
+
+### 🎨 Editor UV - MESH TOOL (Adobe Illustrator Style)
+- **Mesh Tool Implementado**: Distorção por malha de pontos estilo Adobe Illustrator
+- **Interpolação Global**: Todos os pontos influenciam a distorção baseado na distância
+- **Curvas Orgânicas**: Distorção natural e suave sem segmentação
+- **Modo Único**: Removido modo Photoshop, mantido apenas Mesh Tool
+
+### 💾 Estado Persistente Completo
+- **Salvamento Automático**: Estado salvo automaticamente quando pontos são movidos
+- **Restauração Perfeita**: Pontos, textura e configurações preservados entre modos
+- **Escala Proporcional**: Adaptação automática para diferentes tamanhos de canvas
+- **Grade Completa**: Recriação de todos os pontos da grade durante restauração
+
+### 🔧 Correções Críticas
+- **Erro `undefined`**: Corrigido problema de pontos undefined na grade
+- **Função `getControlPoint`**: Reescrita para cálculo direto por índice
+- **Verificações de Segurança**: Adicionadas verificações para pontos inválidos
+- **Timing de Renderização**: Delay para garantir processamento completo
+
+### 🎯 FASE 2 - Preview em Tempo Real
+- **PIP Funcional**: Preview 3D com distorção aplicada automaticamente
+- **Aplicação Automática**: Textura editada aplicada ao piso em tempo real
+- **Estado Persistente**: Configurações mantidas entre mudanças de modo
+- **Fluxo de Texturas**: Textura-base → Editor → Textura-editada → Piso
+
+### 📊 Performance
+- **Otimização de Renderização**: Redução de chamadas desnecessárias
+- **Debounce**: Controle de atualizações para melhor performance
+- **Cache de Texturas**: Reutilização de texturas processadas
+
 ## [1.2.1] - 2024-12-19
 
 ### ✨ Editor UV - FASE 1 Completa
